@@ -1,6 +1,6 @@
 # Book Rating API
 
-A simple Golang web API that allows users to search for books, submit reviews, and receive real-time notifications for new reviews. This application utilizes the [Gutendex API](https://gutendex.com/) for fetching book details and features an in-memory review system with optional WebSocket notifications.
+A simple Golang web API to search books, submit reviews, and receive real-time notifications for new reviews. The application uses the [Gutendex API](https://gutendex.com/) for book details and implements an in-memory review system with optional WebSocket notifications.
 
 ---
 
@@ -9,7 +9,7 @@ A simple Golang web API that allows users to search for books, submit reviews, a
 1. **Search Books**
    - **Endpoint**: `GET /books?search=<query>`
    - Search for books by title using the Gutendex API.
-   - **Returns**: A list of books with the following details:
+   - **Returns**: A list of books with basic details:
      - Title
      - Authors
      - Languages
@@ -17,7 +17,7 @@ A simple Golang web API that allows users to search for books, submit reviews, a
 
 2. **Submit Review**
    - **Endpoint**: `POST /review`
-   - **Payload**:
+   - **Payload example**:
      ```json
      {
        "book_id": 1342,
@@ -25,17 +25,19 @@ A simple Golang web API that allows users to search for books, submit reviews, a
        "review": "Amazing book!"
      }
      ```
-   - **Validation**: Ensures that the rating is between 0 and 5 and that the review text is provided.
+   - **Validates**:
+     - Rating (between 0 and 5).
+     - Review text (cannot be empty).
    - **Stores**: Reviews in memory and calculates the average rating for the book.
-   - **Real-time Notifications**: Broadcasts the review to all connected WebSocket clients.
+   - **Broadcasts**: The review to WebSocket clients in real-time.
 
 3. **Get Reviews**
    - **Endpoint**: `GET /reviews?book_id=<id>`
-   - **Returns**: All reviews for a specific book ID and the updated average rating.
+   - **Returns**: All reviews and the average rating for the given book ID.
 
 4. **Real-Time Notifications**
    - **WebSocket endpoint**: `ws://localhost:8080/ws`
-   - Receive live updates when a new review is submitted, including:
+   - Receives a live update whenever a new review is submitted, including:
      - Book ID
      - Rating
      - Review text
@@ -45,11 +47,10 @@ A simple Golang web API that allows users to search for books, submit reviews, a
 
 ## Setup Instructions
 
-Follow these steps to set up and run the Book Rating API locally.
+Follow these steps to get the Book Rating API up and running locally.
 
 ### 1. Clone the Repository
-First, clone the repository to your local machine:
+Clone the repository to your local machine:
 ```bash
 git clone <repository_url>
 cd book-api
-

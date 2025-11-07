@@ -2,10 +2,6 @@
 
 A simple Golang web API that allows users to search for books, submit reviews, and receive real-time notifications for new reviews. This application utilizes the [Gutendex API](https://gutendex.com/) for fetching book details and features an in-memory review system with optional WebSocket notifications.
 
-# Book Rating API
-
-A simple Golang web API that allows users to search for books, submit reviews, and receive real-time notifications for new reviews. This application utilizes the [Gutendex API](https://gutendex.com/) for fetching book details and features an in-memory review system with optional WebSocket notifications.
-
 ---
 
 ## Features
@@ -56,3 +52,4 @@ First, clone the repository to your local machine:
 ```bash
 git clone <repository_url>
 cd book-api
+
